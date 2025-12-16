@@ -8,6 +8,7 @@ Zadaniem aplikacji jest usprawnienie dokumentowania incydentów oraz zdarzeń za
 - Dostęp do bazy danych:
   - Login: `symfony`
   - Hasło: `symfony`
+  - Nazwa bazy danych: `symfony`
 
 ## Opis funkcjonalności
 Aplikacja zawiera:
@@ -26,8 +27,9 @@ Aplikacja zawiera:
 2. Konfiguracja środowiska.
 3. Zmiana danych do logowania do bazy w razie potrzeby:
 ```dotenv
-DATABASE_URL="pgsql://db_user:db_pass@127.0.0.1:5432/db_name"
+DATABASE_URL="pgsql://db_user:db_pass@db:5432/db_name"
 ```
 4. Utworzenie bazy danych.
 5. Wykonanie migracji.
-6. Uruchomienie z poziomu Docker.
+6. Uzupelnienie przykladowymi danymi z bazy
+7. Uruchomienie z poziomu Docker.
