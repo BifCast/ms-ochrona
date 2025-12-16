@@ -2,13 +2,13 @@
 
 Zadaniem aplikacji jest usprawnienie dokumentowania incydentów oraz zdarzeń zaobserwowanych przez ochronę podczas pracy w terenie. System pozwala na porządkowanie zgłoszeń i rezygnację z papierowego obiegu informacji.
 
-## Informacje wstępne
-- Repozytorium zawiera skonfigurowaną bazę danych, w której występują dane przykładowe.
-- Konta użytkowników: Wszyscy użytkownicy, niezależnie od posiadanej rangi, mają ustawione hasło: `password`.
-- Dostęp do bazy danych:
-  - Login: `symfony`
-  - Hasło: `symfony`
-  - Nazwa bazy danych: `symfony`
+## Informacje
+- Repozytorium zawiera skonfigurowaną bazę danych, w której występują dane przykładowe:
+  - Wszyscy użytkownicy, niezależnie od posiadanej rangi, mają ustawione hasło: `password`.
+  - Dostęp do bazy danych:
+    - Login: `symfony`
+    - Hasło: `symfony`
+    - Nazwa bazy danych: `symfony`
 
 ## Opis funkcjonalności
 Aplikacja zawiera:
