@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{event.id ? 'Edytuj zgłoszenie' : 'Nowe zgłoszenie'}}
+{% endblock %}
+
+{% block body %}
+    {{form_start(form)}}
+    {{form_row(form.date)}}
+    {{form_row(form.description)}}
+    {{form_row(form.typeID)}}
+    {{form_row(form.place)}}
+
+    <button class="btn btn-primary">{{event.id ? 'Zapisz zmiany' : 'Utwórz'}}
+    {{form_end(form)}}
+{% endblock %}

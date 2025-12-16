@@ -1,0 +1,52 @@
+services:
+  php:
+    build: ./docker/php
+    container_name: symfony_php
+    volumes:
+      - ./src:/var/www/html/src
+      - ./config:/var/www/html/config
+      - ./templates:/var/www/html/templates
+      - ./public:/var/www/html/public
+      - symfony_vendor:/var/www/html/vendor
+      - symfony_var:/var/www/html/var
+    ports:
+      - "8000:8000"
+    command: php bin/console server:run
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    container_name: symfony_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: symfony
+      POSTGRES_USER: symfony
+      POSTGRES_PASSWORD: symfony
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+###> doctrine/doctrine-bundle ###
+  database:
+    image: postgres:${POSTGRES_VERSION:-16}-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+      # You should definitely change the password in production
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+    volumes:
+      - database_data:/var/lib/postgresql/data:rw
+      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+      # - ./docker/db/data:/var/lib/postgresql/data:rw
+###< doctrine/doctrine-bundle ###
+
+volumes:
+  pgdata:
+  symfony_vendor:
+  symfony_var:
+
+###> doctrine/doctrine-bundle ###
+  database_data:
+###< doctrine/doctrine-bundle ###

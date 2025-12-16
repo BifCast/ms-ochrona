@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Szczegóły eventu o ID: {{event.id}}{% endblock %}
+
+{% block body %}
+    <h1>Szczegóły eventu o ID: {{event.id}}</h1>
+
+    <ul>
+        <li><strong>ID:</strong> {{event.id}}</li>
+        <li><strong>Autor:</strong> {{event.authorName}}</li>
+        <li><strong>Typ:</strong> {{event.typeName}}</li>
+        <li><strong>Opis:</strong> {{event.description}}</li>
+        <li><strong>Miejsce:</strong> {{event.place}}</li>
+        <li><strong>Data utworzenia:</strong> {{event.date|date('H:i, d-m-Y')}}</li>
+        <li><strong>Data ostatniej modyfikacji:</strong> {{event.updatedAt|date('H:i, d-m-Y')}}</li>
+    </ul>
+
+    <a href="{{path('event', { id: event.id })}}" class="btn btn-primary">
+        Edytuj
+    </a>
+
+    <a href="{{path('app_events')}}" class="btn btn-secondary">
+        Powrót do listy
+    </a>
+{% endblock %}

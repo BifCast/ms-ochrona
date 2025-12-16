@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panel zdarzeń{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h2>Panel zdarzeń</h2>
+    <p>
+        Jesteś zalogowany jako: {{user.userIdentifier}} / {{user.email}} | <a href="{{path('app_logout')}}">Wyloguj</a> | <a href="{{path('event_new')}}">Dodaj</a>
+    </p>
+
+    <div class="card">
+        <div class="card-body p-0">
+            <table class="table table-striped table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Typ zdarzenia</th>
+                        <th scope="col">Opis</th>
+                        <th scope="col">Miejsce</th>
+                        <th scope="col">Opcje</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Autor</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for event in events %}
+                        <tr>
+                            <td>{{event.typeName}}</td>
+                            <td>
+                                {{event.description|slice(0,30)}}{% if event.description|length > 30 %}...{% endif %}
+                            </td>
+                            <td>
+                                {{event.place|slice(0,20)}}{% if event.place|length > 20 %}...{% endif %}
+                            </td>
+                            <td>
+                                <a href="{{path('event', {'id': event.id})}}" class="btn btn-sm btn-warning">Edytuj</a>
+                                <a href="{{path('event_show', {'id': event.id})}}" class="btn btn-sm btn-info">Szczegóły</a>
+                            </td>
+                            <td>{{event.date|date('H:i, d-m-Y')}}</td>
+                            <td>{{event.authorName}}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center text-muted">Brak zdarzeń do wyświetlenia</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
